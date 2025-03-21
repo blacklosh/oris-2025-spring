@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="ru.itis.model.UserEntity">
+        <id name="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name"/>
+
+        <bag name="courses" table="student_course">
+            <key>
+                <column name="user_id" not-null="true"/>
+            </key>
+            <many-to-many entity-name="ru.itis.model.Course">
+                <column name="course_id" not-null="true"/>
+            </many-to-many>
+        </bag>
+    </class>
+    
+</hibernate-mapping>
